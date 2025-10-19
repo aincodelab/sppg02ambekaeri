@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPPG-02 Ambekaeri - Satuan Pelayanan Pemenuhan Gizi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variabel Warna */
+        :root {
+            --primary: #2E8B57; /* Hijau Sehat */
+            --primary-dark: #267349;
+            --secondary: #4682B4; /* Biru Terpercaya */
+            --accent: #FF8C00; /* Oranye Energi */
+            --dark: #333333; /* Teks Utama */
+            --medium: #666666; /* Teks Sekunder */
+            --light: #F5F5F5; /* Background */
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-subtext {
+            font-size: 0.8rem;
+            color: var(--medium);
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--medium);
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--light);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .date-navigation {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-icon:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .current-date {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .menu-content {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .menu-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .menu-details {
+            padding: 30px;
+        }
+
+        .menu-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .menu-day {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .post-time {
+            color: var(--medium);
+            font-size: 0.9rem;
+        }
+
+        .all-menu-items {
+            margin-bottom: 25px;
+        }
+
+        .menu-category {
+            margin-bottom: 25px;
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .menu-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .item-description {
+            color: var(--medium);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .item-composition {
+            font-size: 0.85rem;
+            color: var(--medium);
+            font-style: italic;
+        }
+
+        .nutrition-info h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .nutrition-item {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .nutrition-label {
+            font-size: 0.9rem;
+            color: var(--medium);
+        }
+
+        /* Activities Section */
+        .activities {
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activities-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .activities-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 30px;
+        }
+
+        .activity-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: 300px;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            border-radius: 0;
+        }
+
+        .activity-card:hover .activity-image img {
+            transform: scale(1.05);
+        }
+
+        .activity-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .activity-content {
+            padding: 20px;
+        }
+
+        .activity-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .activity-description {
+            color: var(--medium);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--medium);
+        }
+
+        .activity-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta h2 {
+            color: var(--white);
+        }
+
+        .cta h2::after {
+            background-color: var(--white);
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta .btn {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .activity-card {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--white);
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .menu-header, .activities-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .activity-card {
+                flex: 0 0 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .nutrition-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .menu-items-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div>
+                        <div class="logo-text">SPPG-02 Ambekaeri</div>
+                        <span class="logo-subtext">Satuan Pelayanan Pemenuhan Gizi</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#menu">Menu Harian</a></li>
+                    <li><a href="#activities">Kegiatan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>SPPG-02 Ambekaeri</h1>
+            <p>Menyajikan menu bergizi seimbang setiap hari untuk kesehatan dan tumbuh kembang optimal masyarakat Indonesia.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Lihat Menu Hari Ini</a>
+                <a href="#about" class="btn btn-secondary">Tentang Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Tentang SPPG-02 Ambekaeri</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>SPPG-02 Ambekaeri adalah unit pelayanan pemenuhan gizi yang berkomitmen menyediakan makanan bergizi seimbang berdasarkan pedoman "Isi Piringku" dari Kementerian Kesehatan.</p>
+                    <p>Kami melayani masyarakat dengan menyajikan menu harian yang beragam, lezat, dan memenuhi kebutuhan gizi untuk semua kelompok usia.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-text">Penerima Manfaat</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">7</span>
+                            <span class="stat-text">Hari Pelayanan</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-text">Menu Harian</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tim SPPG-02 Ambekaeri">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2>Menu Harian</h2>
+            
+            <div class="menu-header">
+                <h3>Semua Menu Hari Ini</h3>
+                <div class="date-navigation">
+                    <div class="nav-icon prev-day">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="current-date">Senin, 15 Januari 2024</div>
+                    <div class="nav-icon next-day">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-content">
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Menu Harian SPPG">
+                </div>
+                
+                <div class="menu-details">
+                    <div class="menu-title">
+                        <div class="menu-day">Menu Lengkap Hari Ini</div>
+                        <div class="post-time">
+                            <i class="far fa-clock"></i> Diposting: <span id="current-time">06:30</span> WIB
+                        </div>
+                    </div>
+                    
+                    <div class="all-menu-items">
+                        <div class="menu-category">
+                            <h4 class="category-title">Makanan Utama</h4>
+                            <div class="menu-items-grid">
+                                <div class="menu-item-card">
+                                    <div class="item-name">Nasi Merah</div>
+                                    <div class="item-description">Sumber karbohidrat kompleks dengan serat tinggi</div>
+                                    <div class="item-composition">Porsi: 100g</div>
+                                </div>
+                                
+                                <div class="menu-item-card">
+                                    <div class="item-name">Ikan Kembung Bakar</div>
+                                    <div class="item-description">Sumber protein dan omega-3 untuk kecerdasan</div>
+                                    <div class="item-composition">Porsi: 80g</div>
+                                </div>
+                                
+                                <div class="menu-item-card">
+                                    <div class="item-name">Tumis Kangkung</div>
+                                    <div class="item-description">Sayuran hijau kaya zat besi dan vitamin</div>
+                                    <div class="item-composition">Porsi: 100g</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-category">
+                            <h4 class="category-title">Buah-buahan</h4>
+                            <div class="menu-items-grid">
+                                <div class="menu-item-card">
+                                    <div class="item-name">Semangka</div>
+                                    <div class="item-description">Buah segar kaya air dan vitamin C</div>
+                                    <div class="item-composition">Porsi: 150g</div>
+                                </div>
+                                
+                                <div class="menu-item-card">
+                                    <div class="item-name">Pisang</div>
+                                    <div class="item-description">Sumber kalium dan energi cepat</div>
+                                    <div class="item-composition">Porsi: 100g (1 buah sedang)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-info">
+                        <h4>Kandungan Gizi Harian (Total)</h4>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-item">
+                                <span class="nutrition-value">1.200</span>
+                                <span class="nutrition-label">Kalori (kkal)</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-value">60g</span>
+                                <span class="nutrition-label">Protein</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-value">165g</span>
+                                <span class="nutrition-label">Karbohidrat</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-value">30g</span>
+                                <span class="nutrition-label">Lemak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities" id="activities">
+        <div class="container">
+            <h2>Kegiatan SPPG</h2>
+            
+            <div class="activities-header">
+                <h3>Kegiatan Terbaru Kami</h3>
+                <div class="slider-controls">
+                    <div class="nav-icon prev-activity">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="nav-icon next-activity">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activities-slider">
+                <div class="slider-container" id="slider-container">
+                    <!-- Activity Card 1 -->
+                    <div class="activity-card">
+                        <div class="activity-image">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Penyuluhan Gizi">
+                            <div class="activity-date">12 Jan 2024</div>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Penyuluhan Gizi Seimbang</h3>
+                            <p class="activity-description">
+                                Kegiatan penyuluhan tentang pentingnya gizi seimbang bagi ibu hamil dan balita di wilayah Ambekaeri dengan peserta lebih dari 50 orang.
+                            </p>
+                            <div class="activity-meta">
+                                <div class="activity-location">
+                                    <i class="fas fa-map-marker-alt"></i> Balai Desa Ambekaeri
+                                </div>
+                                <div class="activity-time">
+                                    <i class="far fa-clock"></i> 10:00 WIB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Card 2 -->
+                    <div class="activity-card">
+                        <div class="activity-image">
+                            <img src="https://images.unsplash.com/photo-1559305289-0d0f76ba0221?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pembagian Makanan">
+                            <div class="activity-date">10 Jan 2024</div>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Pembagian Makanan Tambahan</h3>
+                            <p class="activity-description">
+                                Pembagian makanan tambahan bergizi untuk 75 anak-anak di Posyandu Mawar, Desa Ambekaeri dengan menu khusus balita.
+                            </p>
+                            <div class="activity-meta">
+                                <div class="activity-location">
+                                    <i class="fas fa-map-marker-alt"></i> Posyandu Mawar
+                                </div>
+                                <div class="activity-time">
+                                    <i class="far fa-clock"></i> 08:30 WIB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Card 3 -->
+                    <div class="activity-card">
+                        <div class="activity-image">
+                            <img src="https://images.unsplash.com/photo-1552581237-7e1fd5f10f0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pelatihan Masak">
+                            <div class="activity-date">8 Jan 2024</div>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Pelatihan Masak Sehat</h3>
+                            <p class="activity-description">
+                                Pelatihan memasak makanan sehat dan bergizi bagi 30 kader PKK Desa Ambekaeri dengan fokus pada menu budget rendah gizi tinggi.
+                            </p>
+                            <div class="activity-meta">
+                                <div class="activity-location">
+                                    <i class="fas fa-map-marker-alt"></i> Aula Kantor Desa
+                                </div>
+                                <div class="activity-time">
+                                    <i class="far fa-clock"></i> 13:00 WIB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Card 4 -->
+                    <div class="activity-card">
+                        <div class="activity-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Monitoring Gizi">
+                            <div class="activity-date">5 Jan 2024</div>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Monitoring Status Gizi</h3>
+                            <p class="activity-description">
+                                Kegiatan pemantauan status gizi anak balita di Desa Ambekaeri dengan pemeriksaan antropometri dan konseling gizi untuk orang tua.
+                            </p>
+                            <div class="activity-meta">
+                                <div class="activity-location">
+                                    <i class="fas fa-map-marker-alt"></i> Posyandu Melati
+                                </div>
+                                <div class="activity-time">
+                                    <i class="far fa-clock"></i> 09:00 WIB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Card 5 -->
+                    <div class="activity-card">
+                        <div class="activity-image">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Demo Masak">
+                            <div class="activity-date">3 Jan 2024</div>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Demo Masak Menu SPPG</h3>
+                            <p class="activity-description">
+                                Demonstrasi memasak menu SPPG harian untuk menunjukkan proses penyiapan makanan bergizi dengan bahan lokal yang terjangkau.
+                            </p>
+                            <div class="activity-meta">
+                                <div class="activity-location">
+                                    <i class="fas fa-map-marker-alt"></i> Dapur SPPG Ambekaeri
+                                </div>
+                                <div class="activity-time">
+                                    <i class="far fa-clock"></i> 14:00 WIB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-dots" id="slider-dots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Informasi Lebih Lanjut</h2>
+            <p>Untuk informasi lebih detail tentang program, menu, dan kegiatan SPPG-02 Ambekaeri, silakan hubungi kami.</p>
+            <a href="#" class="btn">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SPPG-02 Ambekaeri</h3>
+                    <p>Satuan Pelayanan Pemenuhan Gizi untuk masyarakat Desa Ambekaeri dan sekitarnya.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Sehat No. 02, Desa Ambekaeri</li>
+                        <li><i class="fas fa-phone"></i> (021) 3456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@sppg-Ambekaeri.go.id</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Jam Pelayanan</h3>
+                    <ul class="footer-links">
+                        <li>Setiap Hari: 06.00 - 20.00 WIB</li>
+                        <li>Pengambilan Menu: 06.30 - 19.30</li>
+                        <li>Konsultasi Gizi: 09.00 - 15.00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SPPG-02 Ambekaeri - Satuan Pelayanan Pemenuhan Gizi. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Date Navigation for Menu
+        const prevDayBtn = document.querySelector('.prev-day');
+        const nextDayBtn = document.querySelector('.next-day');
+        const currentDateEl = document.querySelector('.current-date');
+        
+        // Sample dates for demonstration
+        const dates = [
+            "Minggu, 14 Januari 2024",
+            "Senin, 15 Januari 2024", 
+            "Selasa, 16 Januari 2024",
+            "Rabu, 17 Januari 2024",
+            "Kamis, 18 Januari 2024",
+            "Jumat, 19 Januari 2024",
+            "Sabtu, 20 Januari 2024"
+        ];
+        
+        let currentDateIndex = 1; // Start with Monday
+        
+        function updateDateDisplay() {
+            currentDateEl.textContent = dates[currentDateIndex];
+        }
+        
+        prevDayBtn.addEventListener('click', () => {
+            if (currentDateIndex > 0) {
+                currentDateIndex--;
+                updateDateDisplay();
+                updateMenuContent();
+            }
+        });
+        
+        nextDayBtn.addEventListener('click', () => {
+            if (currentDateIndex < dates.length - 1) {
+                currentDateIndex++;
+                updateDateDisplay();
+                updateMenuContent();
+            }
+        });
+        
+        // Activities Slider
+        const sliderContainer = document.getElementById('slider-container');
+        const sliderDots = document.getElementById('slider-dots');
+        const prevActivityBtn = document.querySelector('.prev-activity');
+        const nextActivityBtn = document.querySelector('.next-activity');
+        const activityCards = document.querySelectorAll('.activity-card');
+        
+        let currentSlide = 0;
+        const cardsPerView = getCardsPerView();
+        
+        function getCardsPerView() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 992) return 2;
+            return 3;
+        }
+        
+        function updateSlider() {
+            const cardWidth = activityCards[0].offsetWidth + 30; // card width + gap
+            const translateX = -currentSlide * cardWidth * cardsPerView;
+            sliderContainer.style.transform = `translateX(${translateX}px)`;
+            
+            // Update dots
+            updateDots();
+        }
+        
+        function updateDots() {
+            const totalSlides = Math.ceil(activityCards.length / cardsPerView);
+            sliderDots.innerHTML = '';
+            
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    updateSlider();
+                });
+                sliderDots.appendChild(dot);
+            }
+        }
+        
+        prevActivityBtn.addEventListener('click', () => {
+            const totalSlides = Math.ceil(activityCards.length / cardsPerView);
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = totalSlides - 1;
+            }
+            updateSlider();
+        });
+        
+        nextActivityBtn.addEventListener('click', () => {
+            const totalSlides = Math.ceil(activityCards.length / cardsPerView);
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateSlider();
+        });
+        
+        // Update menu content based on selected day
+        function updateMenuContent() {
+            const dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            const currentDay = dayNames[currentDateIndex];
+            
+            document.querySelector('.menu-day').textContent = `Menu Lengkap ${currentDay}`;
+            console.log(`Menu untuk ${currentDay} dimuat`);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Sticky header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Update current time for posts
+        function updatePostTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('id-ID', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                timeZone: 'Asia/Makassar'
+            });
+            
+            document.getElementById('current-time').textContent = timeString;
+        }
+        
+        // Handle window resize for slider
+        window.addEventListener('resize', () => {
+            const newCardsPerView = getCardsPerView();
+            if (newCardsPerView !== cardsPerView) {
+                currentSlide = 0;
+                updateSlider();
+            }
+        });
+        
+        // Initialize
+        updatePostTime();
+        updateSlider();
+        
+        // Update time every minute
+        setInterval(updatePostTime, 60000);
+        
+        // Auto slide activities every 5 seconds
+        setInterval(() => {
+            const totalSlides = Math.ceil(activityCards.length / getCardsPerView());
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateSlider();
+        }, 5000);
+    </script>
+</body>
+</html>
